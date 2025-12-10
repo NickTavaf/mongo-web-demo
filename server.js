@@ -12,8 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// serve static files from /public
-const publicPath = path.join(__dirname, "public");
+// serve static files from /docs
+const publicPath = path.join(__dirname, "docs");
 app.use(express.static(publicPath));
 
 const mongoUri = process.env.MONGO_URI;
