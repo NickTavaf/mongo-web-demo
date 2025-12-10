@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.homepage {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(135deg, #d4e4dc 0%, #e8f0eb 50%, #c9ddd3 100%);
+    color: #2d4035;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container-home {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px;
+}
+
+.hero-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem;
+    font-style: italic;
+    color: #3a5a47;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    animation: fadeSlideDown 1s ease-out;
+}
+
+
+/* ease in effect  */
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slogan {
+    font-size: 1.2rem;
+    color: #5a7566;
+    font-weight: 300;
+    margin-bottom: 40px;
+    animation: fadeIn 1.2s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.pitch {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #3a5a47;
+    text-align: center;
+    animation: fadeIn 1.4s ease-out 0.5s both;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 60px 0;
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 2px solid rgba(122, 161, 138, 0.2);
+    transition: all 0.3s ease;
+    animation: fadeSlideUp 0.8s ease-out both;
+    text-align: center;
+}
+
+.symbol {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    background: rgba(107, 155, 130, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.box-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #3a5a47;
+    margin-bottom: 15px;
+}
+
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #5a7566;
+}
+
+
+
+.Map-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin: 80px 0;
+}
+
+.map-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background: #6b9b82;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.map-button:hover {
+    background: #5a8a71;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(107, 155, 130, 0.3);
+}
+
+/* Info Section */
+.info-section {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    border: 2px solid rgba(122, 161, 138, 0.2);
+    animation: fadeIn 1.8s ease-out 1.2s both;
+}
+
+.info-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #3a5a47;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.info-text {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #5a7566;
+    margin-bottom: 20px;
+}
+
+.user-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.user-tag {
+    padding: 10px 20px;
+    background: rgba(107, 155, 130, 0.15);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    color: #3a5a47;
+    border: 1px solid rgba(107, 155, 130, 0.3);
+}
+
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 3rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-section {
+        padding: 30px 20px;
+    }
+
+    .container-home {
+        padding: 40px 20px;
+    }
+}

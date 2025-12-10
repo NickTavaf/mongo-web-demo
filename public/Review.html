@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmos - Review Location</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stles.css">
+    
+    <!-- link to Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <div class="page-header">
+            <h1 class="page-title">Share Your Experience</h1>
+            <p class="page-subtitle">Your review helps others navigate the world more comfortably. Take your time and share what feels important to you.</p>
+        </div>
+
+        <form class="review-form" id="note-form">
+            <!-- Overall Comfort Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">●</span>
+                    Overall Comfort Level
+                </h3>
+                
+                <div class="form-group">
+                    <label class="form-label">How comfortable did you feel at this location?</label>
+                    <p class="form-description">Rate from 1 (very uncomfortable) to 10 (very comfortable)</p>
+                    
+                    <div class="scale-group">
+                        <input type="range" min="1" max="10" value="7" class="scale-slider" id="comfortScale">
+                        <div class="scale-labels">
+                            <span>Very Uncomfortable</span>
+                            <span>Neutral</span>
+                            <span>Very Comfortable</span>
+                        </div>
+                        <div class="scale-value">7 / 10</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Information Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">◆</span>
+                    Location Information
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">Location Name</label>
+                    <input type="text" id="restaurant" name="restaurant" placeholder="e.g., Central Park, Local Coffee Shop" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Area/Address</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., Manhattan, Brooklyn" required>
+                </div>
+            </div>
+
+            <!-- Sensory Information Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">♪</span>
+                    Sensory Environment
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">Noise Level</label>
+                    <div class="rating-group">
+                        <div class="rating-option">
+                            <input type="radio" name="noise" id="noise-quiet" value="quiet">
+                            <label for="noise-quiet">
+                                <span class="rating-symbol">◇</span>
+                                Very Quiet
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="noise" id="noise-moderate" value="moderate" checked>
+                            <label for="noise-moderate">
+                                <span class="rating-symbol">◆</span>
+                                Moderate
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="noise" id="noise-loud" value="loud">
+                            <label for="noise-loud">
+                                <span class="rating-symbol">◈</span>
+                                Loud
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Crowd Density</label>
+                    <div class="rating-group">
+                        <div class="rating-option">
+                            <input type="radio" name="crowd" id="crowd-empty" value="empty">
+                            <label for="crowd-empty">
+                                <span class="rating-symbol">○</span>
+                                Peaceful
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="crowd" id="crowd-some" value="some" checked>
+                            <label for="crowd-some">
+                                <span class="rating-symbol">◐</span>
+                                Some People
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="crowd" id="crowd-busy" value="busy">
+                            <label for="crowd-busy">
+                                <span class="rating-symbol">●</span>
+                                Crowded
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lighting</label>
+                    <div class="rating-group">
+                        <div class="rating-option">
+                            <input type="radio" name="lighting" id="light-natural" value="natural" checked>
+                            <label for="light-natural">
+                                <span class="rating-symbol">☼</span>
+                                Natural
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="lighting" id="light-soft" value="soft">
+                            <label for="light-soft">
+                                <span class="rating-symbol">◑</span>
+                                Soft Artificial
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="lighting" id="light-bright" value="bright">
+                            <label for="light-bright">
+                                <span class="rating-symbol">✦</span>
+                                Bright/Harsh
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">✓</span>
+                    Available Features
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">What features did you notice? (Select all that apply)</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="quiet-zones">
+                            <span>Quiet zones available</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="seating">
+                            <span>Seating areas</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="signage">
+                            <span>Clear signage</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="bathrooms">
+                            <span>Accessible bathrooms</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="nature">
+                            <span>Natural elements</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="staff">
+                            <span>Staff support available</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Written Review Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">✎</span>
+                    Your Experience
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">Tell us more about your visit</label>
+                    <p class="form-description">Share any details that might help others. What made you comfortable or uncomfortable? Any tips for visiting?</p>
+                    <textarea id="review" name="review" placeholder="The space was peaceful with soft lighting. I found a quiet corner that felt very calm..." required></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </div>
+
+            <p class="privacy-note">
+                Your review will be shared anonymously to help the community.
+            </p>
+        </form>
+    </div>
+
+    <!-- Map and Reviews Side by Side - Outside container for wider width -->
+    <div class="past-reviews-section">
+        <div class="map-reviews-wrapper">
+            <!-- Map Container (Left Side) -->
+            <div id="map"></div>
+
+            <!-- Reviews Container (Right Side) -->
+            <div class="reviews-container">
+                <h2 class="reviews-title">Community Reviews</h2>
+                <div id="notes-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS (must be BEFORE your script that uses L) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Your script -->
+    <script src="Reviewscript.js"></script>
+</body>
+</html>

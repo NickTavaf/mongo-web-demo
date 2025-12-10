@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmos - Review Location</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <div class="page-header">
+            <h1 class="page-title">Share Your Experience</h1>
+            <p class="page-subtitle">Your review helps others navigate the world more comfortably. Take your time and share what feels important to you.</p>
+        </div>
+
+        <form class="review-form" id="note-form">
+            <!-- Overall Comfort Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">●</span>
+                    Overall Comfort Level
+                </h3>
+                
+                <div class="form-group">
+                    <label class="form-label">How comfortable did you feel at this location?</label>
+                    <p class="form-description">Rate from 1 (very uncomfortable) to 10 (very comfortable)</p>
+                    
+                    <div class="scale-group">
+                        <input type="range" min="1" max="10" value="7" class="scale-slider" id="comfortScale">
+                        <div class="scale-labels">
+                            <span>Very Uncomfortable</span>
+                            <span>Neutral</span>
+                            <span>Very Comfortable</span>
+                        </div>
+                        <div class="scale-value">7 / 10</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Information Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">◆</span>
+                    Location Information
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">Location Name</label>
+                    <input type="text" id="restaurant" name="restaurant" placeholder="e.g., Central Park, Local Coffee Shop" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Area/Address</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., Manhattan, Brooklyn" required>
+                </div>
+            </div>
+
+            <!-- Sensory Information Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">♪</span>
+                    Sensory Environment
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">Noise Level</label>
+                    <div class="rating-group">
+                        <div class="rating-option">
+                            <input type="radio" name="noise" id="noise-quiet" value="quiet">
+                            <label for="noise-quiet">
+                                <span class="rating-symbol">◇</span>
+                                Very Quiet
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="noise" id="noise-moderate" value="moderate" checked>
+                            <label for="noise-moderate">
+                                <span class="rating-symbol">◆</span>
+                                Moderate
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="noise" id="noise-loud" value="loud">
+                            <label for="noise-loud">
+                                <span class="rating-symbol">◈</span>
+                                Loud
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Crowd Density</label>
+                    <div class="rating-group">
+                        <div class="rating-option">
+                            <input type="radio" name="crowd" id="crowd-empty" value="empty">
+                            <label for="crowd-empty">
+                                <span class="rating-symbol">○</span>
+                                Peaceful
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="crowd" id="crowd-some" value="some" checked>
+                            <label for="crowd-some">
+                                <span class="rating-symbol">◐</span>
+                                Some People
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="crowd" id="crowd-busy" value="busy">
+                            <label for="crowd-busy">
+                                <span class="rating-symbol">●</span>
+                                Crowded
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Lighting</label>
+                    <div class="rating-group">
+                        <div class="rating-option">
+                            <input type="radio" name="lighting" id="light-natural" value="natural" checked>
+                            <label for="light-natural">
+                                <span class="rating-symbol">☼</span>
+                                Natural
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="lighting" id="light-soft" value="soft">
+                            <label for="light-soft">
+                                <span class="rating-symbol">◑</span>
+                                Soft Artificial
+                            </label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" name="lighting" id="light-bright" value="bright">
+                            <label for="light-bright">
+                                <span class="rating-symbol">✦</span>
+                                Bright/Harsh
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">✓</span>
+                    Available Features
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">What features did you notice? (Select all that apply)</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="quiet-zones">
+                            <span>Quiet zones available</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="seating">
+                            <span>Seating areas</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="signage">
+                            <span>Clear signage</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="bathrooms">
+                            <span>Accessible bathrooms</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="nature">
+                            <span>Natural elements</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="features" value="staff">
+                            <span>Staff support available</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Written Review Section -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <span class="section-icon">✎</span>
+                    Your Experience
+                </h3>
+
+                <div class="form-group">
+                    <label class="form-label">Tell us more about your visit</label>
+                    <p class="form-description">Share any details that might help others. What made you comfortable or uncomfortable? Any tips for visiting?</p>
+                    <textarea id="review" name="review" placeholder="The space was peaceful with soft lighting. I found a quiet corner that felt very calm..." required></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </div>
+
+            <p class="privacy-note">
+                Your review will be shared anonymously to help the community.
+            </p>
+        </form>
+
+        <!-- Past Reviews Section -->
+        <div class="past-reviews-section">
+            <h2 class="reviews-title">Community Reviews</h2>
+            <div id="notes-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('note-form');
+        const list = document.getElementById('notes-list');
+        const slider = document.getElementById('comfortScale');
+        const valueDisplay = document.querySelector('.scale-value');
+
+        // Update slider value display
+        slider.addEventListener('input', function() {
+            valueDisplay.textContent = this.value + ' / 10';
+        });
+
+        async function loadNotes() {
+            const res = await fetch('/api/notes');
+            const notes = await res.json();
+
+            list.innerHTML = '';
+            
+            if (notes.length === 0) {
+                list.innerHTML = '<p class="no-reviews">No reviews yet. Be the first to share!</p>';
+                return;
+            }
+
+            notes.forEach((note) => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                
+                const text = note.text;
+                
+                // Extract rating
+                const ratingMatch = text.match(/Rating: (\d+)\/10/);
+                const rating = ratingMatch ? ratingMatch[1] : 'N/A';
+                
+                // Extract location info
+                const restaurantMatch = text.match(/My review of (.+?) in /);
+                const restaurant = restaurantMatch ? restaurantMatch[1].trim() : 'Unknown Location';
+                
+                const locationMatch = text.match(/ in (.+?) is /);
+                const location = locationMatch ? locationMatch[1].trim() : 'Unknown Area';
+                
+                const reviewMatch = text.match(/ is (.+?) \(Rating:/);
+                const reviewText = reviewMatch ? reviewMatch[1].trim() : text;
+                
+                // Extract sensory info
+                const noiseMatch = text.match(/\[Noise: (.+?)\]/);
+                const noise = noiseMatch ? noiseMatch[1] : null;
+                
+                const crowdMatch = text.match(/\[Crowd: (.+?)\]/);
+                const crowd = crowdMatch ? crowdMatch[1] : null;
+                
+                const lightingMatch = text.match(/\[Lighting: (.+?)\]/);
+                const lighting = lightingMatch ? lightingMatch[1] : null;
+                
+                const date = new Date(note.createdAt).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+
+                // Create sensory tags HTML
+                let sensoryTags = '';
+                if (noise && noise !== 'not specified') {
+                    const noiseIcons = { quiet: '◇', moderate: '◆', loud: '◈' };
+                    sensoryTags += `<span class="sensory-tag"><span class="tag-icon">${noiseIcons[noise] || '♪'}</span>${noise}</span>`;
+                }
+                if (crowd && crowd !== 'not specified') {
+                    const crowdIcons = { empty: '○', some: '◐', busy: '●' };
+                    sensoryTags += `<span class="sensory-tag"><span class="tag-icon">${crowdIcons[crowd] || '○'}</span>${crowd}</span>`;
+                }
+                if (lighting && lighting !== 'not specified') {
+                    const lightIcons = { natural: '☼', soft: '◑', bright: '✦' };
+                    sensoryTags += `<span class="sensory-tag"><span class="tag-icon">${lightIcons[lighting] || '☼'}</span>${lighting}</span>`;
+                }
+
+                card.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-location">
+                            <strong>${restaurant.toUpperCase()}</strong>
+                            <span class="review-area">${location}</span>
+                        </div>
+                        <div class="review-rating">
+                            <span class="rating-number">${rating}</span>
+                            <span class="rating-label">/10</span>
+                        </div>
+                    </div>
+                    ${sensoryTags ? `<div class="sensory-tags">${sensoryTags}</div>` : ''}
+                    <div class="review-body">
+                        <p>${reviewText}</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">${date}</span>
+                    </div>
+                `;
+                
+                list.appendChild(card);
+            });
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const restaurant = document.getElementById('restaurant').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const scale = slider.value;
+            const review = document.getElementById('review').value.trim();
+            
+            // Get sensory selections
+            const noise = document.querySelector('input[name="noise"]:checked')?.value || 'not specified';
+            const crowd = document.querySelector('input[name="crowd"]:checked')?.value || 'not specified';
+            const lighting = document.querySelector('input[name="lighting"]:checked')?.value || 'not specified';
+            
+            // Get features
+            const features = Array.from(document.querySelectorAll('input[name="features"]:checked'))
+                .map(cb => cb.value);
+
+            if (!restaurant || !location || !scale || !review) return;
+
+            // Store everything in a structured format
+            const text = `My review of ${restaurant} in ${location} is ${review} (Rating: ${scale}/10) [Noise: ${noise}] [Crowd: ${crowd}] [Lighting: ${lighting}] [Features: ${features.join(', ')}]`;
+
+            await fetch('/api/notes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text }),
+            });
+
+            // Clear form
+            document.getElementById('restaurant').value = '';
+            document.getElementById('location').value = '';
+            slider.value = '7';
+            valueDisplay.textContent = '7 / 10';
+            document.getElementById('review').value = '';
+            
+            // Uncheck all radios and checkboxes
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+            
+            loadNotes();
+        });
+
+        // Checkbox selection highlight
+        document.querySelectorAll('.checkbox-label').forEach(label => {
+            const checkbox = label.querySelector('input[type="checkbox"]');
+            
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    label.style.borderColor = '#6b9b82';
+                    label.style.background = 'rgba(107, 155, 130, 0.1)';
+                } else {
+                    label.style.borderColor = '#c9ddd3';
+                    label.style.background = 'white';
+                }
+            });
+        });
+
+        // Radio button selection highlight
+        document.querySelectorAll('.rating-option').forEach(option => {
+            const radio = option.querySelector('input[type="radio"]');
+            
+            radio.addEventListener('change', function() {
+                document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => {
+                    r.closest('.rating-option').style.borderColor = '#c9ddd3';
+                    r.closest('.rating-option').style.background = 'white';
+                });
+                
+                if (this.checked) {
+                    option.style.borderColor = '#6b9b82';
+                    option.style.background = 'rgba(107, 155, 130, 0.1)';
+                }
+            });
+            
+            if (radio.checked) {
+                option.style.borderColor = '#6b9b82';
+                option.style.background = 'rgba(107, 155, 130, 0.1)';
+            }
+        });
+
+        loadNotes();
+    </script>
+</body>
+</html>

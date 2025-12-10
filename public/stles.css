@@ -1,0 +1,543 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #d4e4dc;
+    color: #2d4035;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #3a5a47;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    transition: color 0.2s ease;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #2d4035;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    color: #2d4035;
+    margin-bottom: 15px;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: #3a5a47;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.form-section {
+    padding-bottom: 35px;
+}
+
+.form-section:last-child {
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d4035;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-icon {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3a5a47;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2d4035;
+    margin-bottom: 12px;
+}
+
+.form-description {
+    font-size: 0.85rem;
+    color: #3a5a47;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #2d4035;
+    background: white;
+    border: 2px solid #a8c9b8;
+    border-radius: 12px;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6b9b82;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.7;
+}
+
+.rating-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.rating-option {
+    flex: 1;
+    min-width: 140px;
+    padding: 15px;
+    background: white;
+    border: 2px solid #a8c9b8;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rating-option:hover {
+    border-color: #6b9b82;
+    background: rgba(107, 155, 130, 0.1);
+}
+
+.rating-option input[type="radio"] {
+    display: none;
+}
+
+.rating-option label {
+    cursor: pointer;
+    display: block;
+    font-weight: 600;
+    color: #2d4035;
+    font-size: 1rem;
+}
+
+.rating-symbol {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #6b9b82;
+}
+
+/* Scale Slider */
+.scale-group {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    border: 2px solid #a8c9b8;
+}
+
+.scale-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #b8e6d4 0%, #f9e5a8 50%, #f5a8a8 100%);
+    outline: none;
+    margin: 20px 0;
+}
+
+.scale-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #3a5a47;
+    cursor: pointer;
+    border: 4px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Sensory Tags */
+.sensory-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(58, 90, 71, 0.15);
+}
+
+.sensory-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #a8c9b8;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #3a5a47;
+  text-transform: capitalize;
+}
+
+.tag-icon {
+  font-size: 1rem;
+  color: #6b9b82;
+}
+
+.scale-slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #3a5a47;
+    cursor: pointer;
+    border: 4px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #3a5a47;
+    margin-top: 10px;
+}
+
+.scale-value {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d4035;
+    margin-top: 15px;
+}
+
+/* Checkbox Groups */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: white;
+    border: 2px solid #a8c9b8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label:hover {
+    border-color: #6b9b82;
+    background: rgba(107, 155, 130, 0.1);
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    accent-color: #6b9b82;
+}
+
+/* Submit Section */
+.submit-section {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 40px;
+    padding-top: 30px;
+}
+
+.btn {
+    padding: 16px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #3a5a47;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2d4035;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(45, 64, 53, 0.3);
+}
+
+.privacy-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #3a5a47;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+/* Past Reviews Section */
+.past-reviews-section {
+    margin-top: 60px;
+    padding: 40px 20px 0;
+}
+
+/* Map and Reviews Container - Side by Side */
+.map-reviews-wrapper {
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    gap: 35px;
+    margin-top: 40px;
+    align-items: start;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #a8c9b8;
+    margin-top: 70px;
+}
+
+.reviews-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: #2d4035;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Scrollable reviews container */
+#notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    border: 2px solid #c9ddd3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom scrollbar styling */
+#notes-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+#notes-list::-webkit-scrollbar-track {
+    background: rgba(201, 221, 211, 0.3);
+    border-radius: 10px;
+}
+
+#notes-list::-webkit-scrollbar-thumb {
+    background: #6b9b82;
+    border-radius: 10px;
+}
+
+#notes-list::-webkit-scrollbar-thumb:hover {
+    background: #5a8a71;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    color: #3a5a47;
+    font-style: italic;
+    border: 2px solid #a8c9b8;
+}
+
+/* Review Cards */
+.review-card {
+    background: white;
+    border: 2px solid #a8c9b8;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    min-width: 0; /* Allows card to shrink if needed */
+}
+
+.review-card:hover {
+    border-color: #6b9b82;
+    box-shadow: 0 4px 12px rgba(107, 155, 130, 0.2);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(58, 90, 71, 0.15);
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.review-location {
+    flex: 1;
+    min-width: 0; /* Allows text to wrap properly */
+}
+
+.review-location strong {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d4035;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.review-area {
+    display: block;
+    font-size: 0.9rem;
+    color: #5a7566;
+}
+
+.review-rating {
+    background: rgba(107, 155, 130, 0.15);
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.rating-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3a5a47;
+    line-height: 1;
+}
+
+.rating-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #5a7566;
+    margin-top: 2px;
+}
+
+.review-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #2d4035;
+    margin-bottom: 15px;
+}
+
+.review-footer {
+    padding-top: 12px;
+    border-top: 1px solid rgba(58, 90, 71, 0.15);
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: #5a7566;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .rating-group {
+        flex-direction: column;
+    }
+
+    .rating-option {
+        min-width: 100%;
+    }
+
+    .submit-section {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .review-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .review-rating {
+        width: 100%;
+    }
+    
+    #notes-list {
+        max-height: 400px;
+    }
+    
+    /* Stack map and reviews on mobile */
+    .map-reviews-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    #map {
+        height: 350px;
+    }
+}
