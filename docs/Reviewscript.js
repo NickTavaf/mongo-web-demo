@@ -1,3 +1,6 @@
+// Backend API URL - ADDED THIS LINE
+const API_URL = 'https://mongo-web-demo.onrender.com';
+
 // ----- DOM elements -----
 const form = document.getElementById("note-form");
 const list = document.getElementById("notes-list");
@@ -33,7 +36,7 @@ if (slider && valueDisplay) {
 // ----- Load notes into the list -----
 async function loadNotes() {
   try {
-    const res = await fetch("/api/notes");
+    const res = await fetch(`${API_URL}/api/notes`); // CHANGED THIS LINE
     if (!res.ok) {
       console.error("Failed to load notes:", res.status, res.statusText);
       return;
@@ -144,7 +147,7 @@ async function loadMarkers() {
   if (!map || !markersLayer) return;
 
   try {
-    const res = await fetch("/api/notes");
+    const res = await fetch(`${API_URL}/api/notes`); // CHANGED THIS LINE
     if (!res.ok) {
       console.error(
         "Failed to load notes for markers:",
@@ -250,7 +253,7 @@ form.addEventListener("submit", async (e) => {
   )}]`;
 
   // Send everything to backend
-  await fetch("/api/notes", {
+  await fetch(`${API_URL}/api/notes`, { // CHANGED THIS LINE
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
