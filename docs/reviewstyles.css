@@ -31,6 +31,7 @@ body {
     margin-bottom: 30px;
     transition: color 0.2s ease;
     font-weight: 600;
+    margin-left: -20vh;
 }
 
 .back-link:hover {
