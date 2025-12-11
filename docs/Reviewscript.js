@@ -1,4 +1,4 @@
-// Backend API URL - ADDED THIS LINE
+// Backend API URL - connects to Render backend
 const API_URL = 'https://mongo-web-demo.onrender.com';
 
 // ----- DOM elements -----
@@ -36,7 +36,7 @@ if (slider && valueDisplay) {
 // ----- Load notes into the list -----
 async function loadNotes() {
   try {
-    const res = await fetch(`${API_URL}/api/notes`); // CHANGED THIS LINE
+    const res = await fetch(`${API_URL}/api/notes`); 
     if (!res.ok) {
       console.error("Failed to load notes:", res.status, res.statusText);
       return;
@@ -85,6 +85,10 @@ async function loadNotes() {
       const lightingMatch = text.match(/\[Lighting: (.+?)\]/);
       const lighting = lightingMatch ? lightingMatch[1] : null;
 
+      // NEW: Extract texture info
+      const textureMatch = text.match(/\[Texture: (.+?)\]/);
+      const texture = textureMatch ? textureMatch[1] : null;
+
       const date = new Date(note.createdAt).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
@@ -112,6 +116,13 @@ async function loadNotes() {
         sensoryTags += `<span class="sensory-tag"><span class="tag-icon">${
           lightIcons[lighting] || "☼"
         }</span>${lighting}</span>`;
+      }
+      // NEW: Add texture tag
+      if (texture && texture !== "not specified" && texture !== "not-applicable") {
+        const textureIcons = { soft: "◡", mixed: "◠", crunchy: "◬" };
+        sensoryTags += `<span class="sensory-tag"><span class="tag-icon">${
+          textureIcons[texture] || "◡"
+        }</span>${texture}</span>`;
       }
 
       card.innerHTML = `
@@ -147,7 +158,7 @@ async function loadMarkers() {
   if (!map || !markersLayer) return;
 
   try {
-    const res = await fetch(`${API_URL}/api/notes`); // CHANGED THIS LINE
+    const res = await fetch(`${API_URL}/api/notes`); 
     if (!res.ok) {
       console.error(
         "Failed to load notes for markers:",
@@ -205,7 +216,7 @@ form.addEventListener("submit", async (e) => {
 
   const restaurant = document.getElementById("restaurant").value.trim();
   const location = document.getElementById("location").value.trim();
-  const scale = slider.value; // Changed from getElementById("scale") to slider
+  const scale = slider.value;
   const review = document.getElementById("review").value.trim();
 
   // Get sensory selections
@@ -217,6 +228,10 @@ form.addEventListener("submit", async (e) => {
     "not specified";
   const lighting =
     document.querySelector('input[name="lighting"]:checked')?.value ||
+    "not specified";
+  // NEW: Get texture selection
+  const texture =
+    document.querySelector('input[name="texture"]:checked')?.value ||
     "not specified";
 
   // Get features
@@ -247,13 +262,11 @@ form.addEventListener("submit", async (e) => {
     }
   }
 
-  // Text used for the list (with sensory info)
-  const text = `My review of ${restaurant} in ${location} is ${review} (Rating: ${scale}/10) [Noise: ${noise}] [Crowd: ${crowd}] [Lighting: ${lighting}] [Features: ${features.join(
-    ", "
-  )}]`;
+  // Text used for the list (with sensory info including texture)
+  const text = `My review of ${restaurant} in ${location} is ${review} (Rating: ${scale}/10) [Noise: ${noise}] [Crowd: ${crowd}] [Lighting: ${lighting}] [Texture: ${texture}] [Features: ${features.join(", ")}]`;
 
-  // Send everything to backend
-  await fetch(`${API_URL}/api/notes`, { // CHANGED THIS LINE
+  // Send everything to backend (MongoDB via Render)
+  await fetch(`${API_URL}/api/notes`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -281,6 +294,12 @@ form.addEventListener("submit", async (e) => {
   document
     .querySelectorAll('input[type="checkbox"]')
     .forEach((c) => (c.checked = false));
+
+  // Set defaults back
+  document.getElementById("noise-moderate").checked = true;
+  document.getElementById("crowd-some").checked = true;
+  document.getElementById("light-natural").checked = true;
+  document.getElementById("texture-na").checked = true;
 
   // Reload list + markers so new review appears
   await loadNotes();

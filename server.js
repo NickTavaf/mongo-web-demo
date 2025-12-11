@@ -41,7 +41,6 @@ mongoose
 const noteSchema = new mongoose.Schema({
   text: { type: String, required: true },
 
-  // NEW: extra fields from your review form + geocoding
   restaurant: { type: String },
   location: { type: String },
   scale: { type: Number },
