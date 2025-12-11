@@ -175,7 +175,7 @@ textarea {
     color: #6b9b82;
 }
 
-/* Scale Slider */
+
 .scale-group {
     padding: 20px;
     background: rgba(255, 255, 255, 0.5);
@@ -204,7 +204,7 @@ textarea {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Sensory Tags */
+
 .sensory-tags {
   display: flex;
   gap: 10px;
@@ -258,7 +258,7 @@ textarea {
     margin-top: 15px;
 }
 
-/* Checkbox Groups */
+
 .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -327,13 +327,11 @@ textarea {
     line-height: 1.6;
 }
 
-/* Past Reviews Section */
 .past-reviews-section {
     margin-top: 60px;
     padding: 40px 20px 0;
 }
 
-/* Map and Reviews Container - Side by Side */
 .map-reviews-wrapper {
     display: grid;
     grid-template-columns: 550px 1fr;
@@ -363,7 +361,6 @@ textarea {
     text-align: center;
 }
 
-/* Scrollable reviews container */
 #notes-list {
     display: flex;
     flex-direction: column;
@@ -377,7 +374,6 @@ textarea {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Custom scrollbar styling */
 #notes-list::-webkit-scrollbar {
     width: 10px;
 }
@@ -406,14 +402,13 @@ textarea {
     border: 2px solid #a8c9b8;
 }
 
-/* Review Cards */
 .review-card {
     background: white;
     border: 2px solid #a8c9b8;
     border-radius: 15px;
     padding: 25px;
     transition: all 0.3s ease;
-    min-width: 0; /* Allows card to shrink if needed */
+    min-width: 0; 
 }
 
 .review-card:hover {
@@ -434,7 +429,7 @@ textarea {
 
 .review-location {
     flex: 1;
-    min-width: 0; /* Allows text to wrap properly */
+    min-width: 0; /
 }
 
 .review-location strong {
@@ -493,7 +488,6 @@ textarea {
     color: #5a7566;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .container {
         padding: 25px;
@@ -532,7 +526,7 @@ textarea {
         max-height: 400px;
     }
     
-    /* Stack map and reviews on mobile */
+
     .map-reviews-wrapper {
         grid-template-columns: 1fr;
     }

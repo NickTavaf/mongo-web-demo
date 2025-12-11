@@ -21,9 +21,9 @@
             <h1 class="page-title">Share Your Experience</h1>
             <p class="page-subtitle">Your review helps others navigate the world more comfortably. Take your time and share what feels important to you.</p>
         </div>
-
+<!-- Got the form layout from internet  -->
         <form class="review-form" id="note-form">
-            <!-- Overall Comfort Section -->
+ 
             <div class="form-section">
                 <h3 class="section-title">
                     <span class="section-icon">●</span>
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <!-- Sensory Information Section -->
+
             <div class="form-section">
                 <h3 class="section-title">
                     <span class="section-icon">♪</span>
@@ -152,7 +152,7 @@
                     </div>
                 </div>
 
-                <!-- NEW: Food Texture Question -->
+            
                 <div class="form-group">
                     <label class="form-label">Food Texture (if applicable)</label>
                     <div class="rating-group">
@@ -188,7 +188,7 @@
                 </div>
             </div>
 
-            <!-- Features Section -->
+    
             <div class="form-section">
                 <h3 class="section-title">
                     <span class="section-icon">✓</span>
@@ -226,7 +226,7 @@
                 </div>
             </div>
 
-            <!-- Written Review Section -->
+
             <div class="form-section">
                 <h3 class="section-title">
                     <span class="section-icon">✎</span>
@@ -240,7 +240,7 @@
                 </div>
             </div>
 
-            <!-- Submit Section -->
+         
             <div class="submit-section">
                 <button type="submit" class="btn btn-primary">Submit Review</button>
             </div>
@@ -251,13 +251,12 @@
         </form>
     </div>
 
-    <!-- Map and Reviews Side by Side - Outside container for wider width -->
+   
     <div class="past-reviews-section">
         <div class="map-reviews-wrapper">
-            <!-- Map Container (Left Side) -->
             <div id="map"></div>
 
-            <!-- Reviews Container (Right Side) -->
+           
             <div class="reviews-container">
                 <h2 class="reviews-title">Community Reviews</h2>
                 <div id="notes-list"></div>
@@ -265,10 +264,10 @@
         </div>
     </div>
 
-    <!-- Leaflet JS (must be BEFORE your script that uses L) -->
+    <!-- Leaflet JS  -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- Your script -->
+
     <script src="Reviewscript.js"></script>
 </body>
 </html>

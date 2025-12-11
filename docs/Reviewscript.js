@@ -7,10 +7,10 @@ const list = document.getElementById("notes-list");
 const slider = document.getElementById("comfortScale");
 const valueDisplay = document.querySelector(".scale-value");
 
-// ----- Map setup (safe) -----
+// ----- Map setup  -----
 let map = null;
-let singleMarker = null; // marker for the current submitted review
-let markersLayer = null; // layer to hold ALL review markers
+let singleMarker = null; 
+let markersLayer = null; 
 
 const mapContainer = document.getElementById("map");
 if (mapContainer && typeof L !== "undefined") {
@@ -22,11 +22,10 @@ if (mapContainer && typeof L !== "undefined") {
     attribution: "© OpenStreetMap",
   }).addTo(map);
 
-  // Layer group for all stored review markers
+  
   markersLayer = L.layerGroup().addTo(map);
 }
 
-// Update slider value display
 if (slider && valueDisplay) {
   slider.addEventListener("input", function () {
     valueDisplay.textContent = this.value + " / 10";
@@ -57,11 +56,11 @@ async function loadNotes() {
 
       const text = note.text;
 
-      // Extract rating
+    
       const ratingMatch = text.match(/Rating: (\d+)\/10/);
       const rating = ratingMatch ? ratingMatch[1] : "N/A";
 
-      // Extract location info
+
       const restaurantMatch = text.match(/My review of (.+?) in /);
       const restaurant = restaurantMatch
         ? restaurantMatch[1].trim()
@@ -75,7 +74,7 @@ async function loadNotes() {
       const reviewMatch = text.match(/ is (.+?) \(Rating:/);
       const reviewText = reviewMatch ? reviewMatch[1].trim() : text;
 
-      // Extract sensory info
+ 
       const noiseMatch = text.match(/\[Noise: (.+?)\]/);
       const noise = noiseMatch ? noiseMatch[1] : null;
 
@@ -85,7 +84,7 @@ async function loadNotes() {
       const lightingMatch = text.match(/\[Lighting: (.+?)\]/);
       const lighting = lightingMatch ? lightingMatch[1] : null;
 
-      // NEW: Extract texture info
+
       const textureMatch = text.match(/\[Texture: (.+?)\]/);
       const texture = textureMatch ? textureMatch[1] : null;
 
@@ -97,7 +96,7 @@ async function loadNotes() {
         minute: "2-digit",
       });
 
-      // Create sensory tags HTML
+
       let sensoryTags = "";
       if (noise && noise !== "not specified") {
         const noiseIcons = { quiet: "◇", moderate: "◆", loud: "◈" };
@@ -117,7 +116,7 @@ async function loadNotes() {
           lightIcons[lighting] || "☼"
         }</span>${lighting}</span>`;
       }
-      // NEW: Add texture tag
+ 
       if (texture && texture !== "not specified" && texture !== "not-applicable") {
         const textureIcons = { soft: "◡", mixed: "◠", crunchy: "◬" };
         sensoryTags += `<span class="sensory-tag"><span class="tag-icon">${
@@ -154,7 +153,7 @@ async function loadNotes() {
 
 // ----- Load markers onto the map for ALL reviews -----
 async function loadMarkers() {
-  // If there is no map (for some reason), just skip
+
   if (!map || !markersLayer) return;
 
   try {
@@ -170,11 +169,11 @@ async function loadMarkers() {
 
     const notes = await res.json();
 
-    // Clear old markers so we don't double them
+
     markersLayer.clearLayers();
 
     notes.forEach((note) => {
-      // Only make a marker if we have coordinates
+      
       if (typeof note.lat === "number" && typeof note.lon === "number") {
         const marker = L.marker([note.lat, note.lon]).bindPopup(`
           <b>${note.restaurant || "Restaurant"}</b><br>
@@ -210,7 +209,7 @@ async function geocodeLocation(locationString) {
   return { lat, lon };
 }
 
-// ----- Form submit handler -----
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -219,7 +218,7 @@ form.addEventListener("submit", async (e) => {
   const scale = slider.value;
   const review = document.getElementById("review").value.trim();
 
-  // Get sensory selections
+
   const noise =
     document.querySelector('input[name="noise"]:checked')?.value ||
     "not specified";
@@ -229,12 +228,12 @@ form.addEventListener("submit", async (e) => {
   const lighting =
     document.querySelector('input[name="lighting"]:checked')?.value ||
     "not specified";
-  // NEW: Get texture selection
+
   const texture =
     document.querySelector('input[name="texture"]:checked')?.value ||
     "not specified";
 
-  // Get features
+
   const features = Array.from(
     document.querySelectorAll('input[name="features"]:checked')
   ).map((cb) => cb.value);
@@ -251,7 +250,7 @@ form.addEventListener("submit", async (e) => {
 
   const { lat, lon } = coords;
 
-  // Center map and show a "current" marker
+
   if (map) {
     map.setView([lat, lon], 15);
 
@@ -262,7 +261,6 @@ form.addEventListener("submit", async (e) => {
     }
   }
 
-  // Text used for the list (with sensory info including texture)
   const text = `My review of ${restaurant} in ${location} is ${review} (Rating: ${scale}/10) [Noise: ${noise}] [Crowd: ${crowd}] [Lighting: ${lighting}] [Texture: ${texture}] [Features: ${features.join(", ")}]`;
 
   // Send everything to backend (MongoDB via Render)
@@ -287,7 +285,6 @@ form.addEventListener("submit", async (e) => {
   valueDisplay.textContent = "7 / 10";
   document.getElementById("review").value = "";
 
-  // Uncheck all radios and checkboxes
   document
     .querySelectorAll('input[type="radio"]')
     .forEach((r) => (r.checked = false));
@@ -295,18 +292,17 @@ form.addEventListener("submit", async (e) => {
     .querySelectorAll('input[type="checkbox"]')
     .forEach((c) => (c.checked = false));
 
-  // Set defaults back
+  
   document.getElementById("noise-moderate").checked = true;
   document.getElementById("crowd-some").checked = true;
   document.getElementById("light-natural").checked = true;
   document.getElementById("texture-na").checked = true;
 
-  // Reload list + markers so new review appears
+  
   await loadNotes();
   await loadMarkers();
 });
 
-// Checkbox selection highlight
 document.querySelectorAll(".checkbox-label").forEach((label) => {
   const checkbox = label.querySelector('input[type="checkbox"]');
 
@@ -323,7 +319,6 @@ document.querySelectorAll(".checkbox-label").forEach((label) => {
   }
 });
 
-// Radio button selection highlight
 document.querySelectorAll(".rating-option").forEach((option) => {
   const radio = option.querySelector('input[type="radio"]');
 
